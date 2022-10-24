@@ -1,9 +1,40 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id 'com.android.application' version '7.2.1' apply false
-    id 'com.android.library' version '7.2.1' apply false
+    id 'com.android.application'
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.shaunwang.appiumjava"
+        minSdk 26
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    testImplementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    testImplementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+    testImplementation group: 'commons-validator', name: 'commons-validator', version: '1.7'
+    testImplementation group: 'io.appium', name: 'java-client', version: '7.6.0'
+    testImplementation group: 'org.testng', name: 'testng', version: '7.6.1'
+    testImplementation group: 'io.appium', name: 'droiddriver', version: '1.0.0-BETA1'
 }
